@@ -1,0 +1,107 @@
+<html>
+	
+	<div>
+		<canvas id="myCanvas" width="200" height="100"
+			style="border:1px solid #000000;">
+		</canvas>
+	</div>
+	<div>
+		<canvas id="myCanvas2" width="200" height="100"
+			style="border:1px solid #000000;">
+		</canvas>
+	</div>
+	<div>
+		<canvas id="myCanvas3" width="200" height="100"
+			style="border:1px solid #000000;">
+		</canvas>
+	</div>
+	<div>
+		<canvas id="myCanvas4" width="200" height="100"
+			style="border:1px solid #000000;">
+		</canvas>
+	</div>
+	
+	<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+	<img id="drag1" src="img_logo.jpeg" draggable="true" ondragstart="drag(event)" width="336" height="69">
+		
+		<script>
+			var c=document.getElementById("myCanvas");
+			var ctx=c.getContext("2d");
+			ctx.fillStyle="#FF0000";
+			ctx.fillRect(0,0,150,75);
+			
+			var c=document.getElementById("myCanvas");
+			var ctx=c.getContext("2d");
+			ctx.moveTo(0,0);
+			ctx.lineTo(200,100);
+			ctx.moveTo(0,4);
+			ctx.lineTo(200,100);
+			ctx.stroke();
+
+			var c=document.getElementById("myCanvas");
+			var ctx=c.getContext("2d");
+			ctx.beginPath();
+			ctx.arc(95,50,40,0,2*Math.PI);
+			ctx.stroke();
+			
+			var c=document.getElementById("myCanvas");
+			var ctx=c.getContext("2d");
+			ctx.fillStyle="#FF0000";
+			ctx.font="30px Arial";
+			ctx.fillText("Hello World",10,50);
+			
+			var c=document.getElementById("myCanvas2");
+			var ctx=c.getContext("2d");
+			ctx.font="30px Arial";
+			ctx.strokeText("Hello World",10,50);
+			
+			
+			var c=document.getElementById("myCanvas3");
+			var ctx=c.getContext("2d");
+
+			// Create gradient
+			var grd=ctx.createLinearGradient(0,0,200,0);
+			grd.addColorStop(0,"red");
+			grd.addColorStop(1,"white");
+
+			// Fill with gradient
+			ctx.fillStyle=grd;
+			ctx.fillRect(10,10,150,80);
+			
+			var c=document.getElementById("myCanvas4");
+			var ctx=c.getContext("2d");
+			ctx.fillRect(10,10,1,1);
+			ctx.fillRect(10,10,1,1);
+			ctx.fillRect(13,13,1,1);
+			ctx.fillRect(100,13,1,1);
+			ctx.fillRect(101,13,1,1);
+			ctx.fillRect(102,13,1,1);
+		</script>
+		<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="190">
+			<polygon points="100,10 40,180 190,60 10,60 160,180"
+				style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;">
+		</svg>
+<script>
+function allowDrop(ev)
+{
+ev.preventDefault();
+}
+
+function drag(ev)
+{
+ev.dataTransfer.setData("Text",ev.target.id);
+}
+
+function drop(ev)
+{
+ev.preventDefault();
+var data=ev.dataTransfer.getData("Text");
+ev.target.appendChild(document.getElementById(data));
+}
+</script>
+<style type="text/css">
+#div1 {width:350px;height:70px;padding:10px;border:1px solid #aaaaaa;}
+</style>
+	
+</html>
