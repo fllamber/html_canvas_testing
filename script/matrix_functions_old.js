@@ -5,7 +5,8 @@ function Matrix(linha, coluna, profundidade) {
 function printMatrix(matrix){
 	var tree = false;
 	var two = false;
-	if ("undefined" == typeof(matrix)) {
+	if (undefined == matrix) {
+		//"undefined" == typeof(matrix)
 		return undefined;
 	}
 	var t = matrix[0][0][0];
